@@ -7,11 +7,11 @@ using SpecialFunctions
 using Adapt
 using Random
 using LinearAlgebra
-using FluxExtensions
 using EvalCurves
 using Pkg
 using Statistics
 
+include("flux_extensions.jl")
 include("KNNmemory.jl")
 include("bessel.jl")
 include("svae.jl")

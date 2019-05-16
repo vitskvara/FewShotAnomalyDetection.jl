@@ -32,12 +32,12 @@ end
 SVAEtwocaps(q, g, hdim::Int, zdim::Int, μ, v::Symbol = :unit, T = Float32) = SVAEtwocaps(q, g, zdim, convert(T, huentropy(zdim)), Adapt.adapt(T, Chain(Dense(hdim, zdim), x -> normalizecolumns(x))), Adapt.adapt(T, Dense(hdim, 1, x -> σ.(x) .* 100)), μ, Flux.param(Adapt.adapt(T, [1.])), Val(v))
 SVAEtwocaps(inputDim, hiddenDim, latentDim, numLayers, nonlinearity, layerType, v::Symbol = :unit, T::DataType = Float32) = SVAEtwocaps(inputDim, hiddenDim, latentDim, numLayers, nonlinearity, layerType, Flux.param(Adapt.adapt(T, normalize(randn(latentDim)))), v, T)
 function SVAEtwocaps(inputDim, hiddenDim, latentDim, numLayers, nonlinearity, layerType, μ::AbstractVector, v::Symbol = :unit, T = Float32)
-	encoder = Adapt.adapt(T, FluxExtensions.layerbuilder(inputDim, hiddenDim, hiddenDim, numLayers, nonlinearity, "", layerType))
+	encoder = Adapt.adapt(T, layerbuilder(inputDim, hiddenDim, hiddenDim, numLayers, nonlinearity, "", layerType))
 	decoder = nothing
 	if v == :unit
-		decoder = Adapt.adapt(T, FluxExtensions.layerbuilder(latentDim, hiddenDim, inputDim, numLayers + 1, nonlinearity, "linear", layerType))
+		decoder = Adapt.adapt(T, layerbuilder(latentDim, hiddenDim, inputDim, numLayers + 1, nonlinearity, "linear", layerType))
 	elseif v == :scalarsigma
-		decoder = Adapt.adapt(T, FluxExtensions.layerbuilder(latentDim, hiddenDim, inputDim + 1, numLayers + 1, nonlinearity, "linear", layerType))
+		decoder = Adapt.adapt(T, layerbuilder(latentDim, hiddenDim, inputDim + 1, numLayers + 1, nonlinearity, "linear", layerType))
 	end
 	return SVAEtwocaps(encoder, decoder, hiddenDim, latentDim, μ, v, T)
 end

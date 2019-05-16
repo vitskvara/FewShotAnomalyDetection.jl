@@ -14,8 +14,8 @@ mutable struct SVAEvamp <: SVAE
 end
 
 function SVAEvamp(inputDim, hiddenDim, latentDim, numLayers, nonlinearity, layerType, num_pseudoinputs, T = Float32)
-	encoder = Adapt.adapt(T, FluxExtensions.layerbuilder(inputDim, hiddenDim, hiddenDim, numLayers, nonlinearity, "", layerType))
-    decoder = Adapt.adapt(T, FluxExtensions.layerbuilder(latentDim, hiddenDim, inputDim, numLayers + 1, nonlinearity, "linear", layerType))
+	encoder = Adapt.adapt(T, layerbuilder(inputDim, hiddenDim, hiddenDim, numLayers, nonlinearity, "", layerType))
+    decoder = Adapt.adapt(T, layerbuilder(latentDim, hiddenDim, inputDim, numLayers + 1, nonlinearity, "linear", layerType))
 	return SVAEvamp(encoder, decoder, hiddenDim, latentDim, num_pseudoinputs, T)
 end
 
