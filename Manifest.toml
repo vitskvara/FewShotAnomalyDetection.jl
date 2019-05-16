@@ -18,6 +18,12 @@ git-tree-sha1 = "07a2c077bdd4b6d23a40342a8a108e2ee5e58ab6"
 uuid = "7d9fca2a-8960-54d3-9f78-7d1dccf2cb97"
 version = "0.3.1"
 
+[[BSON]]
+deps = ["Profile", "Test"]
+git-tree-sha1 = "6453cef4f9cb8ded8e28e4d6d12e11e20eb692ea"
+uuid = "fbb218c0-5317-5bc6-957e-2ee96dd4b1f0"
+version = "0.2.3"
+
 [[Base64]]
 uuid = "2a0f44e3-6c83-55bd-87e4-b1978d98bd5f"
 
@@ -87,12 +93,6 @@ git-tree-sha1 = "84aa74986c5b9b898b0d1acaf3258741ee64754f"
 uuid = "34da2185-b29b-5c13-b0c7-acf172513d20"
 version = "2.1.0"
 
-[[Conda]]
-deps = ["Compat", "JSON", "VersionParsing"]
-git-tree-sha1 = "b625d802587c2150c279a40a646fba63f9bd8187"
-uuid = "8f4d0f93-b110-5947-807f-2305c1781a2d"
-version = "1.2.0"
-
 [[Crayons]]
 deps = ["Test"]
 git-tree-sha1 = "f621b8ef51fd2004c7cf157ea47f027fdeac5523"
@@ -154,8 +154,8 @@ uuid = "31c24e10-a181-5473-b8eb-7969acd0382f"
 version = "0.19.2"
 
 [[EvalCurves]]
-deps = ["LinearAlgebra", "PyPlot", "Statistics"]
-git-tree-sha1 = "4c599d7f25ecc285a45d43c93649bdc347dcd725"
+deps = ["LinearAlgebra", "Statistics"]
+git-tree-sha1 = "8e7311fcfa808e57e3cb2be32bb5ef0079002fc1"
 repo-rev = "master"
 repo-url = "https://github.com/vitskvara/EvalCurves.jl.git"
 uuid = "f38dcc0d-dce9-59d8-8cbc-ed225c093724"
@@ -173,8 +173,8 @@ uuid = "587475ba-b771-5e3f-ad9e-33799f191a9c"
 version = "0.8.3"
 
 [[FluxExtensions]]
-deps = ["Adapt", "CSV", "DataFrames", "Distances", "Distributions", "Flux", "LinearAlgebra", "MLDataPattern", "NNlib", "Optim", "Printf", "Random", "Serialization", "SparseArrays", "Statistics", "StatsBase", "Test"]
-git-tree-sha1 = "731d158321c71044e3d3d9cb0d793f0e28414b1a"
+deps = ["Adapt", "BSON", "CSV", "DataFrames", "Distances", "Distributions", "Flux", "LinearAlgebra", "MLDataPattern", "NNlib", "Optim", "Printf", "Random", "Serialization", "SparseArrays", "Statistics", "StatsBase", "Test"]
+git-tree-sha1 = "9bd2dd911074e005d72ea4936dae2e843a1ddacb"
 repo-rev = "master"
 repo-url = "https://github.com/pevnak/FluxExtensions.jl.git"
 uuid = "76425322-8995-11e8-0106-93ec95767fb2"
@@ -199,23 +199,11 @@ git-tree-sha1 = "a3f24677c21f5bbe9d2a714f95dcd58337fb2856"
 uuid = "82899510-4779-5014-852e-03e436cf321d"
 version = "1.0.0"
 
-[[JSON]]
-deps = ["Dates", "Distributed", "Mmap", "Sockets", "Test", "Unicode"]
-git-tree-sha1 = "1f7a25b53ec67f5e9422f1f551ee216503f4a0fa"
-uuid = "682c06a0-de6a-54ab-a142-c8b1cf79cde6"
-version = "0.20.0"
-
 [[Juno]]
 deps = ["Base64", "Logging", "Media", "Profile", "Test"]
 git-tree-sha1 = "4e4a8d43aa7ecec66cadaf311fbd1e5c9d7b9175"
 uuid = "e5e0dc1b-0480-54bc-9374-aad01c23163d"
 version = "0.7.0"
-
-[[LaTeXStrings]]
-deps = ["Compat"]
-git-tree-sha1 = "7ab9b8788cfab2bdde22adf9004bda7ad9954b6c"
-uuid = "b964fa9f-0449-5b57-a5c2-d3ea65f4040f"
-version = "1.0.3"
 
 [[LearnBase]]
 deps = ["LinearAlgebra", "SparseArrays", "StatsBase", "Test"]
@@ -357,18 +345,6 @@ uuid = "de0858da-6303-5e67-8744-51eddeeeb8d7"
 deps = ["Printf"]
 uuid = "9abbd945-dff8-562f-b5e8-e1ebf5ef1b79"
 
-[[PyCall]]
-deps = ["Conda", "Dates", "Libdl", "LinearAlgebra", "MacroTools", "Pkg", "Serialization", "Statistics", "Test", "VersionParsing"]
-git-tree-sha1 = "6e5bac1b1faf3575731a6a5b76f638f2389561d3"
-uuid = "438e738f-606a-5dbb-bf0a-cddfbfd45ab0"
-version = "1.91.2"
-
-[[PyPlot]]
-deps = ["Colors", "LaTeXStrings", "PyCall", "Sockets", "Test", "VersionParsing"]
-git-tree-sha1 = "3ea391c3211f799df20396d256cee5c8bd755605"
-uuid = "d330b81b-6aea-500a-939a-2ce795aea3ee"
-version = "2.8.1"
-
 [[QuadGK]]
 deps = ["DataStructures", "LinearAlgebra", "Test"]
 git-tree-sha1 = "3ce467a8e76c6030d4c3786e7d3a73442017cdc0"
@@ -464,9 +440,9 @@ version = "1.0.0"
 
 [[Tables]]
 deps = ["IteratorInterfaceExtensions", "LinearAlgebra", "Requires", "TableTraits", "Test"]
-git-tree-sha1 = "9e748316f5aa7b7753c90de612ef98fe8b0ea297"
+git-tree-sha1 = "5ab16d650736b21449731fa712bbdae60b3a7ab1"
 uuid = "bd369af6-aec1-5ad0-b16a-f7cc5008161c"
-version = "0.2.1"
+version = "0.2.2"
 
 [[Test]]
 deps = ["Distributed", "InteractiveUtils", "Logging", "Random"]
@@ -508,12 +484,6 @@ uuid = "cf7118a7-6976-5b1a-9a39-7adc72f591a4"
 
 [[Unicode]]
 uuid = "4ec0a83e-493e-50e2-b9ac-8f72acf5a8f5"
-
-[[VersionParsing]]
-deps = ["Compat"]
-git-tree-sha1 = "c9d5aa108588b978bd859554660c8a5c4f2f7669"
-uuid = "81def892-9a0e-5fdd-b105-ffc91e053289"
-version = "1.1.3"
 
 [[WeakRefStrings]]
 deps = ["Random", "Test"]
